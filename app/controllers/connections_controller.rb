@@ -58,15 +58,16 @@ class ConnectionsController < ApplicationController
 
       @accounts_list = ActiveSupport::JSON.decode(response.body)['data']
       @accounts_list.each do |account_item|
+        #find_by or initialize
         if Account.exists?(account_id: account_item['id'].to_i)
-          @account = Account.update(account_id: account_item['id'].to_i, 
-                               name: account_item['name'], 
-                               nature: account_item['nature'], 
-                               ballance: account_item['balance'].to_f, 
-                               curency_code: account_item['currency_code'], 
-                               connection_id: account_item['connection_id'], 
-                               client_name: account_item['extra']['client_name'])
-          @account.update
+          @account = Account.find_by(account_id: account_item['id'].to_i)
+          @account.update(account_id: account_item['id'].to_i, 
+                            name: account_item['name'], 
+                            nature: account_item['nature'], 
+                            ballance: account_item['balance'].to_f, 
+                            curency_code: account_item['currency_code'], 
+                            connection_id: account_item['connection_id'], 
+                            client_name: account_item['extra']['client_name'])
         else @account = Account.new(account_id: account_item['id'].to_i, 
                                name: account_item['name'], 
                                nature: account_item['nature'], 
@@ -74,7 +75,7 @@ class ConnectionsController < ApplicationController
                                curency_code: account_item['currency_code'], 
                                connection_id: account_item['connection_id'], 
                                client_name: account_item['extra']['client_name'])
-          if @account.save
+          if @account.save!
             p 'Account was successfully created.'
           else
             p 'NO account.'
