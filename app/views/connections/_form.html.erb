@@ -1,0 +1,36 @@
+ <%= form_with(model: connection) do |form| %>
+   <% if connection.errors.any? %>
+     <div id="error_explanation">
+       <h2><%= pluralize(connection.errors.count, "error") %> prohibited this connection from being saved:</h2>
+       <ul>
+         <% connection.errors.each do |error| %>
+           <li><%= error.full_message %></li>
+         <% end %>
+       </ul>
+     </div>
+   <% end %>
+
+   <div class="field">
+     <%= form.label :customer_id %>
+     <%= form.number_field :customer_id %>
+   </div>
+
+   <div class="field">
+     <%= form.label :connection_id %>
+     <%= form.number_field :connection_id %>
+   </div>
+
+   <div class="field">
+     <%= form.label :provider_code %>
+     <%= form.text_field :provider_code %>
+   </div>
+
+   <div class="field">
+     <%= form.label :provider_name %>
+     <%= form.text_field :provider_name %>
+   </div>
+
+   <div class="actions">
+     <%= form.submit %>
+   </div>
+ <% end %> 

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Transactions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Transaction</th>
+      <th>Mode</th>
+      <th>Status</th>
+      <th>Made on</th>
+      <th>Amount</th>
+      <th>Currency code</th>
+      <th>Description</th>
+      <th>Origiinal amount</th>
+      <th>Original currency code</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.transaction_id %></td>
+        <td><%= transaction.mode %></td>
+        <td><%= transaction.status %></td>
+        <td><%= transaction.made_on %></td>
+        <td><%= transaction.amount %></td>
+        <td><%= transaction.currency_code %></td>
+        <td><%= transaction.description %></td>
+        <td><%= transaction.origiinal_amount %></td>
+        <td><%= transaction.original_currency_code %></td>
+        <td><%= link_to 'Show', transaction %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

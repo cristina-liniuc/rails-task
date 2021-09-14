@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Accounts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Account</th>
+      <th>Name</th>
+      <th>Nature</th>
+      <th>Ballance</th>
+      <th>Curency code</th>
+      <th>Connection</th>
+      <th>Client name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= account.account_id %></td>
+        <td><%= account.name %></td>
+        <td><%= account.nature %></td>
+        <td><%= account.ballance %></td>
+        <td><%= account.curency_code %></td>
+        <td><%= account.connection_id %></td>
+        <td><%= account.client_name %></td>
+        <td><%= link_to 'Show', transactions_path(:account_id => account.account_id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="column">
+    <h1> Place where money come</h1>
+    <div class="column">
+      <ul>
+        <% if current_user %>
+          <li><a class="button" href="/connections">See my connections</a></li>
+        <% else %>
+          <li><%= link_to "See my connections", new_user_session_path %></li>
+        <% end %>
+      </ul>
+      <!-- <% if current_user %> -->
+        <!-- <a class="button" href="/connections/show">See my connections</a> -->
+      <!-- <% else %> -->
+        <!-- <a class="button" href="/users/sign_in">See my connections</a> -->
+      <!-- <% end %> -->
+    </div>
+    
+  </div>
+</div>

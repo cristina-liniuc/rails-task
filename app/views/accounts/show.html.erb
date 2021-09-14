@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Account:</strong>
+  <%= @account.account_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @account.name %>
+</p>
+
+<p>
+  <strong>Nature:</strong>
+  <%= @account.nature %>
+</p>
+
+<p>
+  <strong>Ballance:</strong>
+  <%= @account.ballance %>
+</p>
+
+<p>
+  <strong>Curency code:</strong>
+  <%= @account.curency_code %>
+</p>
+
+<p>
+  <strong>Connection:</strong>
+  <%= @account.connection_id %>
+</p>
+
+<p>
+  <strong>Client name:</strong>
+  <%= @account.client_name %>
+</p>
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>
