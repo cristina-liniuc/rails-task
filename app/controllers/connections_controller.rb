@@ -55,7 +55,6 @@ class ConnectionsController < ApplicationController
 
       @accounts_list = ActiveSupport::JSON.decode(response.body)['data']
       @accounts_list.each do |account_item|
-        # find_by or initialize
         if Account.exists?(account_id: account_item['id'].to_i)
           @account = Account.find_by(account_id: account_item['id'].to_i)
           @account.update(account_id: account_item['id'].to_i,
@@ -125,7 +124,6 @@ class ConnectionsController < ApplicationController
 
   # GET /connections/new
   def new
-    # @connection = Connection.new
     begin
       response = RestClient::Request.execute(method: :post,
                                              url: 'https://www.saltedge.com/api/v5/connect_sessions/create',

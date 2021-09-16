@@ -1,25 +1,16 @@
-# README
+# Rails App for viewing the bank account info
+Application with API support that allows users to connect the their bank and latest information about their accounts and transactions
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
+Requirements:
+- Ruby 3.0+
+- Rails 6.1.4+
 
-Things you may want to cover:
+```sh
+bundle install
+bundle exec rails db:create
+bundle exec rails db:migrate
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# rails-task
+#launch the app
+bundle exec rails s
+```
