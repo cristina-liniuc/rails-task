@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-    APP_ID = "Sdl8BesDB4qCTnKf2jiez2BFb_D5w8XFZ1mAEeffmNs"
-    SECRET = "-L-Co75UGHSVixmeHxKB700bKqPCt1zIw3Ofr0qaSPM"
+  APP_ID = 'Sdl8BesDB4qCTnKf2jiez2BFb_D5w8XFZ1mAEeffmNs'
+  SECRET = '-L-Co75UGHSVixmeHxKB700bKqPCt1zIw3Ofr0qaSPM'
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -15,20 +15,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     begin
-      response = RestClient::Request.execute(method: :post, 
-                                          url: 'https://www.saltedge.com/api/v5/customers',
-                                          payload: {"data" => {"identifier" => current_user.email}}.to_json,
-                                          headers: {"Accept" => "application/json",
-                                                    "Content-Type" => "application/json",
-                                                    "App-id" => APP_ID,
-                                                    "Secret" => SECRET}
-                                          )
-      rescue RestClient::ExceptionWithResponse => e
+      response = RestClient::Request.execute(method: :post,
+                                             url: 'https://www.saltedge.com/api/v5/customers',
+                                             payload: { 'data' => { 'identifier' => current_user.email } }.to_json,
+                                             headers: { 'Accept' => 'application/json',
+                                                        'Content-Type' => 'application/json',
+                                                        'App-id' => APP_ID,
+                                                        'Secret' => SECRET })
+    rescue RestClient::ExceptionWithResponse => e
       e.response
     end
     current_user.customer_id = ActiveSupport::JSON.decode(response.body)['data']['id'].to_i
     current_user.save
-
   end
 
   # GET /resource/edit

@@ -10,56 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_13_100122) do
-
-  create_table "accounts", force: :cascade do |t|
-    t.integer "account_id"
-    t.string "name"
-    t.string "nature"
-    t.float "ballance"
-    t.string "curency_code"
-    t.integer "connection_id"
-    t.string "client_name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+ActiveRecord::Schema.define(version: 20_210_913_100_122) do
+  create_table 'accounts', force: :cascade do |t|
+    t.integer 'account_id'
+    t.string 'name'
+    t.string 'nature'
+    t.float 'ballance'
+    t.string 'curency_code'
+    t.integer 'connection_id'
+    t.string 'client_name'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "connections", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "connection_id"
-    t.string "provider_code"
-    t.string "provider_name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'connections', force: :cascade do |t|
+    t.integer 'customer_id'
+    t.integer 'connection_id'
+    t.string 'provider_code'
+    t.string 'provider_name'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "transactions", force: :cascade do |t|
-    t.integer "transaction_id"
-    t.string "mode"
-    t.string "status"
-    t.datetime "made_on"
-    t.float "amount"
-    t.string "currency_code"
-    t.string "description"
-    t.float "origiinal_amount"
-    t.string "original_currency_code"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "account_id"
-    t.string "category"
+  create_table 'transactions', force: :cascade do |t|
+    t.integer 'transaction_id'
+    t.string 'mode'
+    t.string 'status'
+    t.datetime 'made_on'
+    t.float 'amount'
+    t.string 'currency_code'
+    t.string 'description'
+    t.float 'origiinal_amount'
+    t.string 'original_currency_code'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.integer 'account_id'
+    t.string 'category'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "customer_id"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  create_table 'users', force: :cascade do |t|
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.integer 'customer_id'
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
-
 end

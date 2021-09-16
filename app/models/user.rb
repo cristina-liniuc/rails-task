@@ -4,5 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :connections, 'primary_key': 'customer_id', 'foreign_key': 'customer_id' 
+  has_many :connections, 'primary_key': 'customer_id', 'foreign_key': 'customer_id'
 end

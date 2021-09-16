@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :transactions
   resources :accounts
   # get 'home/index'
-  root to: "home#index"
+  root to: 'home#index'
   resources :connections do
     collection do
       get 'fetch_connections'

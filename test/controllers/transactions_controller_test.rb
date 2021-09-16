@@ -1,44 +1,48 @@
-require "test_helper"
+require 'test_helper'
 
 class TransactionsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @transaction = transactions(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get transactions_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_transaction_url
     assert_response :success
   end
 
-  test "should create transaction" do
+  test 'should create transaction' do
     assert_difference('Transaction.count') do
-      post transactions_url, params: { transaction: { amount: @transaction.amount, currency_code: @transaction.currency_code, description: @transaction.description, made_on: @transaction.made_on, mode: @transaction.mode, origiinal_amount: @transaction.origiinal_amount, original_currency_code: @transaction.original_currency_code, status: @transaction.status, transaction_id: @transaction.transaction_id } }
+      post transactions_url,
+           params: { transaction: { amount: @transaction.amount, currency_code: @transaction.currency_code,
+                                    description: @transaction.description, made_on: @transaction.made_on, mode: @transaction.mode, origiinal_amount: @transaction.origiinal_amount, original_currency_code: @transaction.original_currency_code, status: @transaction.status, transaction_id: @transaction.transaction_id } }
     end
 
     assert_redirected_to transaction_url(Transaction.last)
   end
 
-  test "should show transaction" do
+  test 'should show transaction' do
     get transaction_url(@transaction)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_transaction_url(@transaction)
     assert_response :success
   end
 
-  test "should update transaction" do
-    patch transaction_url(@transaction), params: { transaction: { amount: @transaction.amount, currency_code: @transaction.currency_code, description: @transaction.description, made_on: @transaction.made_on, mode: @transaction.mode, origiinal_amount: @transaction.origiinal_amount, original_currency_code: @transaction.original_currency_code, status: @transaction.status, transaction_id: @transaction.transaction_id } }
+  test 'should update transaction' do
+    patch transaction_url(@transaction),
+          params: { transaction: { amount: @transaction.amount, currency_code: @transaction.currency_code,
+                                   description: @transaction.description, made_on: @transaction.made_on, mode: @transaction.mode, origiinal_amount: @transaction.origiinal_amount, original_currency_code: @transaction.original_currency_code, status: @transaction.status, transaction_id: @transaction.transaction_id } }
     assert_redirected_to transaction_url(@transaction)
   end
 
-  test "should destroy transaction" do
+  test 'should destroy transaction' do
     assert_difference('Transaction.count', -1) do
       delete transaction_url(@transaction)
     end

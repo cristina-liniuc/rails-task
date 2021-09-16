@@ -35,6 +35,8 @@
     <% end %>
   </tbody>
 </table>
+<% account = Account.find_by(account_id: @transactions.first.account_id)%>
+<%= link_to 'Back', accounts_path(:connection_id => account.connection_id) %>
 
 <br>
 

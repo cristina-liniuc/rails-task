@@ -1,5 +1,6 @@
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  before_action :set_transaction, only: %i[show edit update destroy]
+  before_action :authenticate_user!
 
   # GET /transactions
   def index
@@ -7,8 +8,7 @@ class TransactionsController < ApplicationController
   end
 
   # GET /transactions/1
-  def show
-  end
+  def show; end
 
   # GET /transactions/new
   def new
@@ -16,8 +16,7 @@ class TransactionsController < ApplicationController
   end
 
   # GET /transactions/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /transactions
   def create
@@ -48,13 +47,15 @@ class TransactionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_transaction
-      @transaction = Transaction.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def transaction_params
-      params.require(:transaction).permit(:transaction_id, :mode, :status, :made_on, :amount, :currency_code, :description, :origiinal_amount, :original_currency_code)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_transaction
+    @transaction = Transaction.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def transaction_params
+    params.require(:transaction).permit(:transaction_id, :mode, :status, :made_on, :amount, :currency_code,
+                                        :description, :origiinal_amount, :original_currency_code)
+  end
 end
